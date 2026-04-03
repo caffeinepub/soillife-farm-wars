@@ -1,0 +1,410 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* ── SoilLife Dark Game Theme ── */
+    /* Background: near-black charcoal */
+    --background: 0.13 0.005 260;
+    --foreground: 0.93 0.01 260;
+
+    /* Cards: very dark blue-charcoal */
+    --card: 0.11 0.012 255;
+    --card-foreground: 0.93 0.01 260;
+
+    --popover: 0.14 0.012 255;
+    --popover-foreground: 0.93 0.01 260;
+
+    /* Primary: neon green */
+    --primary: 0.85 0.3 141;
+    --primary-foreground: 0.1 0.02 141;
+
+    /* Secondary: neon purple */
+    --secondary: 0.18 0.02 270;
+    --secondary-foreground: 0.85 0.01 260;
+
+    --muted: 0.18 0.02 260;
+    --muted-foreground: 0.6 0.02 260;
+
+    /* Accent: neon cyan */
+    --accent: 0.22 0.025 240;
+    --accent-foreground: 0.85 0.18 198;
+
+    --destructive: 0.65 0.25 22;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.22 0.02 260;
+    --input: 0.2 0.02 260;
+    --ring: 0.85 0.3 141;
+
+    --chart-1: 0.85 0.3 141;
+    --chart-2: 0.6 0.3 295;
+    --chart-3: 0.85 0.18 198;
+    --chart-4: 0.82 0.18 80;
+    --chart-5: 0.65 0.25 22;
+
+    --sidebar: 0.1 0.01 260;
+    --sidebar-foreground: 0.93 0.01 260;
+    --sidebar-primary: 0.85 0.3 141;
+    --sidebar-primary-foreground: 0.1 0.02 141;
+    --sidebar-accent: 0.18 0.02 260;
+    --sidebar-accent-foreground: 0.93 0.01 260;
+    --sidebar-border: 0.22 0.02 260;
+    --sidebar-ring: 0.85 0.3 141;
+
+    /* Game-specific tokens */
+    --neon-green: 0.85 0.3 141;
+    --neon-purple: 0.6 0.3 295;
+    --neon-cyan: 0.85 0.18 198;
+    --neon-gold: 0.82 0.18 80;
+    --game-bg: 0.1 0.01 260;
+    --game-card: 0.11 0.012 255;
+    --game-soil: 0.3 0.08 50;
+  }
+
+  /* Dark is default for this game */
+  .dark {
+    --background: 0.1 0.01 260;
+    --foreground: 0.93 0.01 260;
+    --card: 0.11 0.012 255;
+    --card-foreground: 0.93 0.01 260;
+    --popover: 0.14 0.012 255;
+    --popover-foreground: 0.93 0.01 260;
+    --primary: 0.85 0.3 141;
+    --primary-foreground: 0.1 0.02 141;
+    --secondary: 0.18 0.02 270;
+    --secondary-foreground: 0.85 0.01 260;
+    --muted: 0.18 0.02 260;
+    --muted-foreground: 0.6 0.02 260;
+    --accent: 0.22 0.025 240;
+    --accent-foreground: 0.85 0.18 198;
+    --destructive: 0.65 0.25 22;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.22 0.02 260;
+    --input: 0.2 0.02 260;
+    --ring: 0.85 0.3 141;
+    --chart-1: 0.85 0.3 141;
+    --chart-2: 0.6 0.3 295;
+    --chart-3: 0.85 0.18 198;
+    --chart-4: 0.82 0.18 80;
+    --chart-5: 0.65 0.25 22;
+    --sidebar: 0.1 0.01 260;
+    --sidebar-foreground: 0.93 0.01 260;
+    --sidebar-primary: 0.85 0.3 141;
+    --sidebar-primary-foreground: 0.1 0.02 141;
+    --sidebar-accent: 0.18 0.02 260;
+    --sidebar-accent-foreground: 0.93 0.01 260;
+    --sidebar-border: 0.22 0.02 260;
+    --sidebar-ring: 0.85 0.3 141;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  /* Pixel-art font utility */
+  .font-pixel {
+    font-family: "Press Start 2P", monospace;
+    image-rendering: pixelated;
+  }
+
+  /* Soil texture background */
+  .soil-bg {
+    background-color: #141414;
+    background-image: radial-gradient(
+        circle at 20% 50%,
+        oklch(0.2 0.06 141 / 0.08) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        circle at 80% 20%,
+        oklch(0.4 0.15 295 / 0.06) 0%,
+        transparent 40%
+      ),
+      radial-gradient(
+        circle at 60% 80%,
+        oklch(0.6 0.15 198 / 0.05) 0%,
+        transparent 35%
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        oklch(0.15 0.01 260 / 0.3) 2px,
+        oklch(0.15 0.01 260 / 0.3) 4px
+      ),
+      repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 2px,
+        oklch(0.15 0.01 260 / 0.15) 2px,
+        oklch(0.15 0.01 260 / 0.15) 4px
+      );
+  }
+
+  /* Game card styles */
+  .game-card {
+    background: oklch(0.11 0.012 255);
+    border-radius: 8px;
+    border: 1px solid oklch(0.22 0.02 260);
+    transition: all 0.2s ease;
+  }
+
+  .game-card-green {
+    border-color: oklch(0.85 0.3 141 / 0.6);
+    box-shadow: 0 0 12px oklch(0.85 0.3 141 / 0.2), 0 0 2px
+      oklch(0.85 0.3 141 / 0.4) inset;
+  }
+
+  .game-card-purple {
+    border-color: oklch(0.6 0.3 295 / 0.6);
+    box-shadow: 0 0 12px oklch(0.6 0.3 295 / 0.2), 0 0 2px
+      oklch(0.6 0.3 295 / 0.4) inset;
+  }
+
+  .game-card-cyan {
+    border-color: oklch(0.85 0.18 198 / 0.6);
+    box-shadow: 0 0 12px oklch(0.85 0.18 198 / 0.2), 0 0 2px
+      oklch(0.85 0.18 198 / 0.4) inset;
+  }
+
+  .game-card-gold {
+    border-color: oklch(0.82 0.18 80 / 0.6);
+    box-shadow: 0 0 12px oklch(0.82 0.18 80 / 0.2), 0 0 2px
+      oklch(0.82 0.18 80 / 0.4) inset;
+  }
+
+  /* Neon button variants */
+  .btn-neon-green {
+    background: oklch(0.85 0.3 141);
+    color: oklch(0.1 0.02 141);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border: none;
+    box-shadow: 0 0 12px oklch(0.85 0.3 141 / 0.5), 0 0 24px
+      oklch(0.85 0.3 141 / 0.25);
+    transition: all 0.15s ease;
+  }
+
+  .btn-neon-green:hover {
+    background: oklch(0.9 0.32 141);
+    box-shadow: 0 0 20px oklch(0.85 0.3 141 / 0.7), 0 0 40px
+      oklch(0.85 0.3 141 / 0.4);
+    transform: translateY(-1px);
+  }
+
+  .btn-neon-purple {
+    background: transparent;
+    color: oklch(0.93 0.01 260);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border: 1.5px solid oklch(0.6 0.3 295);
+    box-shadow: 0 0 10px oklch(0.6 0.3 295 / 0.4), inset 0 0 10px
+      oklch(0.6 0.3 295 / 0.05);
+    transition: all 0.15s ease;
+  }
+
+  .btn-neon-purple:hover {
+    background: oklch(0.6 0.3 295 / 0.15);
+    box-shadow: 0 0 20px oklch(0.6 0.3 295 / 0.6), 0 0 40px
+      oklch(0.6 0.3 295 / 0.3);
+    transform: translateY(-1px);
+  }
+
+  /* Pixel crop tile */
+  .crop-tile {
+    image-rendering: pixelated;
+    border-radius: 4px;
+    background: oklch(0.22 0.05 50);
+    border: 2px solid oklch(0.28 0.07 50);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .crop-tile:hover {
+    border-color: oklch(0.85 0.3 141 / 0.8);
+    box-shadow: 0 0 8px oklch(0.85 0.3 141 / 0.4);
+  }
+
+  .crop-tile.ready {
+    border-color: oklch(0.85 0.3 141);
+    animation: glow-pulse-green 1.5s ease-in-out infinite;
+  }
+
+  /* Progress bar gradient */
+  .progress-gradient {
+    background: linear-gradient(90deg, oklch(0.85 0.18 198), oklch(0.6 0.3 295));
+  }
+
+  /* Nav pill */
+  .nav-pill {
+    border-radius: 20px;
+    padding: 6px 14px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border: 1.5px solid oklch(0.3 0.03 260);
+    background: oklch(0.14 0.012 255);
+    color: oklch(0.7 0.02 260);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    white-space: nowrap;
+  }
+
+  .nav-pill:hover {
+    color: oklch(0.93 0.01 260);
+    border-color: oklch(0.5 0.03 260);
+  }
+
+  .nav-pill.active-green {
+    border-color: oklch(0.85 0.3 141);
+    color: oklch(0.85 0.3 141);
+    box-shadow: 0 0 10px oklch(0.85 0.3 141 / 0.4);
+  }
+
+  .nav-pill.active-purple {
+    border-color: oklch(0.6 0.3 295);
+    color: oklch(0.6 0.3 295);
+    box-shadow: 0 0 10px oklch(0.6 0.3 295 / 0.4);
+  }
+
+  /* Rarity badge */
+  .rarity-common {
+    color: oklch(0.75 0.02 260);
+    border-color: oklch(0.45 0.02 260);
+  }
+  .rarity-rare {
+    color: oklch(0.6 0.25 240);
+    border-color: oklch(0.5 0.2 240);
+  }
+  .rarity-epic {
+    color: oklch(0.6 0.3 295);
+    border-color: oklch(0.5 0.25 295);
+  }
+  .rarity-legendary {
+    color: oklch(0.82 0.18 80);
+    border-color: oklch(0.7 0.18 60);
+  }
+
+  /* HP bar */
+  .hp-bar-player {
+    background: linear-gradient(90deg, oklch(0.85 0.3 141), oklch(0.7 0.25 141));
+  }
+  .hp-bar-enemy {
+    background: linear-gradient(90deg, oklch(0.65 0.25 22), oklch(0.85 0.2 50));
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: oklch(0.1 0.01 260);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: oklch(0.3 0.03 260);
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: oklch(0.4 0.04 260);
+  }
+
+  /* Vignette overlay */
+  .vignette {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 50%,
+      oklch(0.05 0.005 260 / 0.8) 100%
+    );
+  }
+
+  /* Floating particles */
+  .particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  /* SOIL gold text */
+  .soil-gold {
+    background: linear-gradient(135deg, oklch(0.88 0.2 80), oklch(0.7 0.22 55));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Logo pixel text */
+  .logo-pixel {
+    font-family: "Press Start 2P", monospace;
+    background: linear-gradient(135deg, oklch(0.88 0.2 80), oklch(0.7 0.22 55));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
+    filter: drop-shadow(0 0 8px oklch(0.82 0.18 80 / 0.6));
+  }
+
+  /* Section header pixel */
+  .section-header {
+    font-family: "Press Start 2P", monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: oklch(0.93 0.01 260);
+    text-shadow: 0 0 10px oklch(0.85 0.3 141 / 0.5);
+  }
+
+  /* Glowing text variants */
+  .text-glow-green {
+    color: oklch(0.85 0.3 141);
+    text-shadow: 0 0 8px oklch(0.85 0.3 141 / 0.8);
+  }
+
+  .text-glow-purple {
+    color: oklch(0.75 0.3 295);
+    text-shadow: 0 0 8px oklch(0.6 0.3 295 / 0.8);
+  }
+
+  .text-glow-cyan {
+    color: oklch(0.85 0.18 198);
+    text-shadow: 0 0 8px oklch(0.85 0.18 198 / 0.8);
+  }
+
+  .text-glow-gold {
+    color: oklch(0.88 0.2 80);
+    text-shadow: 0 0 8px oklch(0.82 0.18 80 / 0.8);
+  }
+}
